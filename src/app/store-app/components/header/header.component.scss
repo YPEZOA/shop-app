@@ -1,0 +1,22 @@
+.navbar {
+  background-color: #acc4;
+  .navbar-brand a {
+    text-decoration: none;
+  }
+  .form-inline {
+    display: flex;
+  }
+  .navbar-nav {
+    align-items: center;
+    .nav-item {
+      margin-left: 20px;
+    }
+    .nav-item a {
+      text-decoration: none;
+    }
+    .info {
+      display: flex;
+    }
+  }
+}
+

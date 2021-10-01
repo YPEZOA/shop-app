@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="navbar-brand">
+    <a href="#">Store</a>
+  </div>
+  <form class="form-inline">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search products"
+      [formControl]="productSearchText"
+    />
+    <button class="btn_search-product" type="submit" (click)="onSubmit($event)">
+      Search
+    </button>
+  </form>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a href="#" class="nav-item">Home</a></li>
+    <li class="nav-item"><a href="#" class="nav-item">List</a></li>
+    <li class="nav-item info">
+      <span>Cantidad de productos: </span>
+      <span>Subtotal: </span>
+      <a><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+    </li>
+  </ul>
+</nav>
