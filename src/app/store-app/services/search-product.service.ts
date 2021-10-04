@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { IProduct } from '../types/product.interface';
@@ -10,11 +10,8 @@ import { IProduct } from '../types/product.interface';
 })
 export class SearchProductService {
   private API_URL = environment.api_url;
-  private _products!: IProduct;
-
-  get product() {
-    return { ...this._products };
-  }
+  products$ = new BehaviorSubject<IProduct[]>([]);
+  filterProduct$ = new BehaviorSubject<IProduct[]>([]);
 
   constructor(private http: HttpClient) {}
 

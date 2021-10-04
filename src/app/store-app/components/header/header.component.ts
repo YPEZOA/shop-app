@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,12 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   @Output() productToSearch = new EventEmitter<string>();
+  @Input() count!: number;
+  @Input() subTotal!: number;
 
   faShoppingCart = faShoppingCart;
+  faSearch = faSearch;
+
   productSearchText: FormControl;
   text!: string;
 
@@ -18,15 +23,18 @@ export class HeaderComponent implements OnInit {
     this.productSearchText = new FormControl('');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productSearchText.valueChanges
+      .pipe(debounceTime(200))
+      .subscribe((prod) => {
+        this.text = prod;
+        this.productToSearch.emit(prod);
+      });
+    parseFloat(this.subTotal.toString());
+  }
 
   public onSubmit(e: Event): void {
     e.preventDefault();
-    if (this.productSearchText.value !== '') {
-      this.text = this.productSearchText.value;
-      this.productToSearch.emit(this.text);
-    } else {
-      this.text = '';
-    }
+    this.productToSearch.emit(this.text);
   }
 }

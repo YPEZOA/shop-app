@@ -1,5 +1,18 @@
-<app-header (productToSearch)="searchProduct($event)"></app-header>
+<app-header
+  (productToSearch)="searchProduct($event)"
+  [count]="count"
+  [subTotal]="subTotal"
+></app-header>
+<div class="container-alert" *ngIf="productNotFound">
+  <span class="alert-message"> La búsqueda no arrojó ningun resultado </span>
+  <small>Intenta buscar algo más</small>
+</div>
+
 <div class="product-list">
-  <app-product-list *ngFor="let product of products" [product]="product">
+  <app-product-list
+    *ngFor="let product of products | search: filterValue"
+    (shoppingCart)="onHandleAddToCart($event)"
+    [product]="product"
+  >
   </app-product-list>
 </div>

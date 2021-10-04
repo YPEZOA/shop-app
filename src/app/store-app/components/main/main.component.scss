@@ -1,5 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
 .product-list {
-   display: grid;
-   grid-template-columns: 15% 15% auto;
-   justify-items: start;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  margin: auto;
+  justify-items: center;
+  margin-top: 40px;
+}
+.container-alert {
+  text-align: center;
+  margin-top: 100px;
+  font-weight: 500;
+  font-size: 18px;
+  .alert-message {
+    font-size: 26px;
+    color: darkgrey;
+    font-weight: 500;
+  }
+  span {
+    display: block;
+  }
+  small {
+    font-size: 20px;
+  }
+}
+
+@media screen and(max-width: 425px) {
+  .product-list {
+    width: 100%;
+    margin: auto;
+    display: block;
+  }
+}
+
+@media screen and(min-width: 430px) and(max-width: 991px) {
+  .product-list {
+    width: 100%;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1440px) {
+  .product-list {
+    margin-top: 0px;
+    width: auto;
+  }
 }

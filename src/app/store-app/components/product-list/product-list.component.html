@@ -1,5 +1,21 @@
 <div class="product-card">
-  <img [src]="product.photo" alt="image" width="150px" />
+  <img class="product-image" [src]="product.photo" alt="image" width="150px" />
   <span>{{ product.name }}</span>
   <strong>$ {{ product.price | number }}</strong>
+  <div class="contain-data">
+    <button class="btn btn-add" (click)="onAddOrRemove(product, '+')">+</button>
+    <input
+      type="text"
+      class="product-count"
+      [value]="count"
+      [(ngModel)]="count"
+      (keyup)="removeCharacters($event)"
+    />
+    <button class="btn btn-remove" (click)="onAddOrRemove(product, '-')">
+      -
+    </button>
+  </div>
+  <button class="btn btn-addToCart" (click)="onAddToCart(product)">
+    Agregar al carrito
+  </button>
 </div>
