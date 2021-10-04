@@ -1,5 +1,11 @@
 # AppShop
 
+- download this proyect
+- npm install
+- npm install json-server
+- json server --watch data.json
+THIS FOR SHOW PRODUCTS
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
 ## Development server
